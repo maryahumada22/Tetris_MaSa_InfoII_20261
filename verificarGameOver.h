@@ -3,6 +3,6 @@
 
 #include <cstdint>
 
-bool verificarGameOver(uint8_t** tablero, unsigned short int anchoByte);
+bool verificarGameOver(uint8_t** tablero, unsigned short ancho);
 
 #endif
