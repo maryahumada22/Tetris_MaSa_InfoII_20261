@@ -3,6 +3,6 @@
 
 #include <cstdint>
 
-uint8_t* escogerPieza(short &altoPieza);
+uint8_t* escogerPieza(uint8_t &altoPieza);
 
 #endif
