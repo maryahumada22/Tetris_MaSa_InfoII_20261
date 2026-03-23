@@ -1,25 +1,109 @@
 #include "rotarPieza.h"
-using namespace std;
 
-void rotarPieza(uint8_t* pieza, short altoPieza){
+void rotarPieza(uint8_t* pieza, uint8_t &piezaAlto) {
 
-    uint8_t temp[4] = {0,0,0,0};
+    // I
+    if (piezaAlto == 1 && pieza[0] == 0b11110000) {
 
-    // recorrer matriz 4x4 (máximo)
-    for(int i = 0; i < altoPieza; i++){
-        for(int j = 0; j < 8; j++){
+        piezaAlto = 4;
 
-            uint8_t bit = (pieza[i] >> j) & 0b001;
+        pieza[0] = 0b10000000;
+        pieza[1] = 0b10000000;
+        pieza[2] = 0b10000000;
+        pieza[3] = 0b10000000;
 
-            if(bit == 1){
-                // rotación: (i,j) -> (j, alto-1-i)
-                temp[j] |= (1 << (altoPieza - 1 - i));
-            }
-        }
+    } else if (piezaAlto == 4 &&
+               pieza[0] == 0b10000000 &&
+               pieza[1] == 0b10000000 &&
+               pieza[2] == 0b10000000 &&
+               pieza[3] == 0b10000000) {
+
+        piezaAlto = 1;
+        pieza[0] = 0b11110000;
     }
 
-    // copiar de vuelta
-    for(int i = 0; i < altoPieza; i++){
-        pieza[i] = temp[i];
+    // O
+    else if (piezaAlto == 2 &&
+             pieza[0] == 0b00110000 &&
+             pieza[1] == 0b00110000) {
+        // no hace nada
+    }
+
+    // T
+    else if (piezaAlto == 2 &&
+             pieza[0] == 0b00111000 &&
+             pieza[1] == 0b00010000) {
+
+        pieza[0] = 0b00010000;
+        pieza[1] = 0b00110000;
+        pieza[2] = 0b00010000;
+        piezaAlto = 3;
+
+    } else if (piezaAlto == 3 &&
+               pieza[0] == 0b00010000 &&
+               pieza[1] == 0b00110000 &&
+               pieza[2] == 0b00010000) {
+
+        pieza[0] = 0b00010000;
+        pieza[1] = 0b00111000;
+        piezaAlto = 2;
+
+    } else if (piezaAlto == 2 &&
+               pieza[0] == 0b00010000 &&
+               pieza[1] == 0b00111000) {
+
+        pieza[0] = 0b00010000;
+        pieza[1] = 0b00011000;
+        pieza[2] = 0b00010000;
+        piezaAlto = 3;
+
+    } else if (piezaAlto == 3 &&
+               pieza[0] == 0b00010000 &&
+               pieza[1] == 0b00011000 &&
+               pieza[2] == 0b00010000) {
+
+        pieza[0] = 0b00111000;
+        pieza[1] = 0b00010000;
+        piezaAlto = 2;
+    }
+
+    // S
+    else if (piezaAlto == 2 &&
+             pieza[0] == 0b00011000 &&
+             pieza[1] == 0b00110000) {
+
+        pieza[0] = 0b00100000;
+        pieza[1] = 0b00110000;
+        pieza[2] = 0b00010000;
+        piezaAlto = 3;
+
+    } else if (piezaAlto == 3 &&
+               pieza[0] == 0b00100000 &&
+               pieza[1] == 0b00110000 &&
+               pieza[2] == 0b00010000) {
+
+        pieza[0] = 0b00011000;
+        pieza[1] = 0b00110000;
+        piezaAlto = 2;
+    }
+
+    // Z
+    else if (piezaAlto == 2 &&
+             pieza[0] == 0b00110000 &&
+             pieza[1] == 0b00011000) {
+
+        pieza[0] = 0b00010000;
+        pieza[1] = 0b00110000;
+        pieza[2] = 0b00100000;
+        piezaAlto = 3;
+
+    } else if (piezaAlto == 3 &&
+               pieza[0] == 0b00010000 &&
+               pieza[1] == 0b00110000 &&
+               pieza[2] == 0b00100000) {
+
+        pieza[0] = 0b00110000;
+        pieza[1] = 0b00011000;
+        piezaAlto = 2;
     }
 }
