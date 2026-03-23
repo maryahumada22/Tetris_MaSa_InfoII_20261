@@ -1,11 +1,9 @@
 #include "escogerPieza.h"
-#include <cstdlib> // rand
-using namespace std;
+#include <cstdlib>
 
-uint8_t* escogerPieza(short &altoPieza){
+uint8_t* escogerPieza(uint8_t &altoPieza){
 
     int tipo = rand() % 5;
-
     uint8_t* pieza = nullptr;
 
     switch(tipo){
@@ -20,18 +18,18 @@ uint8_t* escogerPieza(short &altoPieza){
         break;
 
     case 2: // T
-        altoPieza = 3;
-        pieza = new uint8_t[3]{0b00111000,0b00010000,0b00000000};
+        altoPieza = 2;
+        pieza = new uint8_t[2]{0b00111000,0b00010000};
         break;
 
     case 3: // S
-        altoPieza = 3;
-        pieza = new uint8_t[3]{0b00011000,0b00110000,0b00000000};
+        altoPieza = 2;
+        pieza = new uint8_t[2]{0b00011000,0b00110000};
         break;
 
     case 4: // Z
-        altoPieza = 3;
-        pieza = new uint8_t[3]{0b00110000,0b00011000,0b00000000};
+        altoPieza = 2;
+        pieza = new uint8_t[2]{0b00110000,0b00011000};
         break;
     }
 
