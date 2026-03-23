@@ -3,6 +3,6 @@
 
 #include <cstdint>
 
-void mostrarPieza(uint8_t* pieza, short altoPieza);
+void mostrarPieza(uint8_t* pieza, uint8_t altoPieza);
 
 #endif
