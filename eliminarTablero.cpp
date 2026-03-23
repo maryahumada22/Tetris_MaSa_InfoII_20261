@@ -1,13 +1,6 @@
-#include <iostream>
-#include <cstdint>
+#include "eliminarTablero.h"
 
-using namespace std;
-
-void eliminarTablero(uint8_t** matriz, unsigned short int bytes) {
-    for (unsigned short int i = 0; i < bytes; i++) {
-        delete[] matriz[i];
-    }
-    delete[] matriz;
-
-    cout << "Memoria del tablero liberada con exito." << endl;
+void eliminarTablero(uint8_t** tablero, unsigned short filas){
+    for(int i=0;i<filas;i++) delete[] tablero[i];
+    delete[] tablero;
 }
