@@ -1,7 +1,8 @@
 #ifndef ELIMINARTABLERO_H
 #define ELIMINARTABLERO_H
+
 #include <cstdint>
 
-void eliminarTablero(uint8_t** matriz, unsigned short int filas);
+void eliminarTablero(uint8_t** tablero, unsigned short filas);
 
-#endif // ELIMINARTABLERO_H
+#endif
