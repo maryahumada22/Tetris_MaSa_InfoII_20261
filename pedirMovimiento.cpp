@@ -1,38 +1,35 @@
+#include "pedirMovimiento.h"
+#include "moverIzq.h"
+#include "moverDer.h"
+#include "bajarPieza.h"
+#include "rotarPieza.h"
+#include "verificarColision.h"
 #include <iostream>
-#include <cstdint>
-#include "bajarpieza.h"
-#include "moverder.h"
-#include "moverizq.h"
-// rotarpieza.h
-
 using namespace std;
 
-void pedirMovimiento(uint8_t** matriz, uint8_t* pieza){
-    char mov = 0;
-    cout << "a=Left|d=Right|s=Down|w=Rotate: ";
+void pedirMovimiento(uint8_t** tablero,
+                     uint8_t* pieza,
+                     uint8_t &altoPieza,
+                     int &px, int &py,
+                     unsigned short filas,
+                     unsigned short ancho){
+
+    char mov;
+    cout << "a=izq d=der s=bajar w=rotar: ";
     cin >> mov;
-    switch (mov) {
-        case 'a':
-        case 'A':
-            cout << "Izquierda" << endl;
-            moverIzq(matriz, pieza);
-            break;
-        case 'd':
-        case 'D':
-            cout << "Derecha" << endl;
-            //moverDer(matriz, pieza);
-            break;
-        case 's':
-        case 'S':
-            cout << "Bajar" << endl;
-            //bajarPieza(matriz, pieza);
-            break;
-        case 'w':
-        case 'W':
-            cout << "Rotar" << endl;
-            //rotar pieza
-            break;
-        default:
-            cout << "Opcion no valida" << endl;
+
+    switch(mov){
+    moverIzq(pieza, altoPieza);
+    moverDer(pieza, altoPieza);
+
+    case 's':
+        if(!verificarColision(tablero,pieza,px,py,filas,altoPieza)){
+            bajarPieza(py, filas, altoPieza);
+        }
+        break;
+
+    case 'w':
+        rotarPieza(pieza, altoPieza);
+        break;
     }
 }
