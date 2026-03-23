@@ -3,6 +3,6 @@
 
 #include <cstdint>
 
-void rotarPieza(uint8_t* pieza, short altoPieza);
+void rotarPieza(uint8_t* pieza, uint8_t &piezaAlto);
 
 #endif
